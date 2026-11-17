@@ -1,0 +1,5 @@
+# produits de compilation
+build/
+# journaux écrits par essai.command
+journal-*.txt
+.DS_Store

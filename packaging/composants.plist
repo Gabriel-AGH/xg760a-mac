@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<!-- L'application est toujours déposée dans le dossier du pilote, d'où le
+	     script de fin d'installation la range dans /Applications : pas de
+	     « relocalisation » vers une copie existante, pas de saut d'une
+	     réinstallation de même version. -->
+	<dict>
+		<key>BundleHasStrictIdentifier</key>
+		<true/>
+		<key>BundleIsRelocatable</key>
+		<false/>
+		<key>BundleIsVersionChecked</key>
+		<false/>
+		<key>BundleOverwriteAction</key>
+		<string>upgrade</string>
+		<key>RootRelativeBundlePath</key>
+		<string>Wi-Fi XG-760A.app</string>
+	</dict>
+</array>
+</plist>

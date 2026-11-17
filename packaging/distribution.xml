@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<installer-gui-script minSpecVersion="1">
+	<title>Pilote Wi-Fi Sagem XG-760A</title>
+	<welcome file="bienvenue.html" mime-type="text/html"/>
+	<license file="licence.txt"/>
+	<conclusion file="conclusion.html" mime-type="text/html"/>
+	<!-- Mac Intel uniquement : le programme est compilé pour x86_64 -->
+	<options customize="never" require-scripts="false" hostArchitectures="x86_64"/>
+	<domains enable_localSystem="true" enable_anywhere="false" enable_currentUserHome="false"/>
+	<volume-check>
+		<allowed-os-versions>
+			<os-version min="10.13"/>
+		</allowed-os-versions>
+	</volume-check>
+	<choices-outline>
+		<line choice="pilote"/>
+	</choices-outline>
+	<choice id="pilote" visible="false">
+		<pkg-ref id="local.xg760a.pkg"/>
+	</choice>
+	<pkg-ref id="local.xg760a.pkg" version="@VERSION@" onConclusion="none">xg760a-composant.pkg</pkg-ref>
+</installer-gui-script>

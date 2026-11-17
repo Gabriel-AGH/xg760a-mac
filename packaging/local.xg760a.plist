@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Service du pilote de la clé Wi-Fi Sagem XG-760A. Il attend que la
+	     clé soit branchée, charge son micrologiciel et tient la connexion. -->
+	<key>Label</key>
+	<string>local.xg760a</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/Library/Application Support/XG760A/xg760a</string>
+		<string>daemon</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>KeepAlive</key>
+	<true/>
+	<key>ThrottleInterval</key>
+	<integer>5</integer>
+	<!-- le trafic réseau ne doit pas être bridé comme une tâche de fond -->
+	<key>ProcessType</key>
+	<string>Interactive</string>
+	<key>StandardOutPath</key>
+	<string>/var/log/xg760a.log</string>
+	<key>StandardErrorPath</key>
+	<string>/var/log/xg760a.log</string>
+</dict>
+</plist>

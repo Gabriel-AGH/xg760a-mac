@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="utf-8"></head>
+<body style="font-family: -apple-system, 'Helvetica Neue', sans-serif; font-size: 13px; line-height: 1.45;">
+<h2 style="font-weight: 600;">Le pilote est installé</h2>
+<p>Branchez la clé, puis cliquez sur la nouvelle <b>icône d'antenne</b> de la
+barre de menus, en haut à droite de l'écran&nbsp;: choisissez votre réseau et
+tapez son mot de passe.</p>
+<p>Le mot de passe est demandé une fois, puis le réseau est mémorisé&nbsp;: la
+clé s'y reconnecte seule à chaque branchement et à chaque démarrage. L'icône
+reste grisée tant que la clé n'est pas connectée.</p>
+<p>Les mêmes actions existent dans le <b>Terminal</b>&nbsp;:</p>
+<pre style="background: rgba(127,127,127,0.15); padding: 8px; border-radius: 6px;">xg760a scan
+xg760a connect "Nom de votre réseau"
+xg760a status</pre>
+<p>La connexion apparaît dans macOS sous la forme de l'interface réseau
+<code>feth760</code>. Si le Wi-Fi intégré ou un câble Ethernet est actif en même
+temps, macOS continue de les préférer&nbsp;; coupez-les pour passer par la clé.</p>
+<p>Pour tout retirer&nbsp;: double-cliquez sur
+<code>/Library/Application Support/XG760A/desinstaller.command</code>.</p>
+</body>
+</html>

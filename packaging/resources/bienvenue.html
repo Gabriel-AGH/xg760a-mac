@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="utf-8"></head>
+<body style="font-family: -apple-system, 'Helvetica Neue', sans-serif; font-size: 13px; line-height: 1.45;">
+<h2 style="font-weight: 600;">Pilote Wi-Fi pour la clé Sagem XG-760A</h2>
+<p>Ce programme permet d'utiliser la clé USB Wi-Fi <b>Sagem XG-760A</b>
+(puce ZyDAS ZD1211, 802.11b/g) sur un <b>Mac à processeur Intel</b>.</p>
+<p>Ce qui va être installé&nbsp;:</p>
+<ul>
+<li>le pilote lui-même, un programme ordinaire rangé dans
+<code>/Library/Application Support/XG760A</code>&nbsp;;</li>
+<li>un service lancé au démarrage, qui attend que la clé soit branchée&nbsp;;</li>
+<li>une petite application, <b>Wi-Fi XG-760A</b>, qui ajoute une icône
+d'antenne dans la barre de menus pour choisir le réseau&nbsp;;</li>
+<li>la commande <code>xg760a</code> pour le Terminal.</li>
+</ul>
+<p>Aucune extension du noyau n'est installée et aucun réglage de sécurité de
+macOS n'est modifié. Un fichier <i>desinstaller.command</i>, rangé dans le
+même dossier, retire tout.</p>
+<p>Réseaux pris en charge&nbsp;: WPA2 et WPA à mot de passe (AES ou TKIP),
+réseaux ouverts, sur la bande 2,4&nbsp;GHz. Le WPA3 seul, le WPA-Entreprise
+et le WEP ne le sont pas.</p>
+</body>
+</html>

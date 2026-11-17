@@ -1,0 +1,4 @@
+#!/bin/sh
+# Arrête une version précédente du service avant de remplacer ses fichiers.
+/bin/launchctl bootout system/local.xg760a 2>/dev/null
+exit 0

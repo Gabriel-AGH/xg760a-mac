@@ -1,0 +1,51 @@
+#!/bin/sh
+# Met en place ce qui vit hors du dossier du pilote, puis démarre le service.
+# Rien ici ne touche au système lui-même : pas d'extension noyau, pas de
+# réglage de sécurité. Tout se défait avec « desinstaller.command ».
+
+DIR="/Library/Application Support/XG760A"
+PLIST=/Library/LaunchDaemons/local.xg760a.plist
+
+/usr/sbin/chown root:wheel "$DIR/xg760a"
+/bin/chmod 755 "$DIR/xg760a" "$DIR/desinstaller.command"
+
+# service lancé au démarrage du Mac
+/bin/cp "$DIR/local.xg760a.plist" "$PLIST"
+/usr/sbin/chown root:wheel "$PLIST"
+/bin/chmod 644 "$PLIST"
+
+# rotation du journal /var/log/xg760a.log (3 fichiers de 1 Mo, compressés)
+if [ -d /etc/newsyslog.d ]; then
+	printf '%s\n' '# journal du pilote xg760a' \
+		'/var/log/xg760a.log	644  3	   1000	*	J' \
+		> /etc/newsyslog.d/xg760a.conf
+fi
+
+# commande « xg760a » accessible dans le Terminal ; un dossier /usr/local/bin
+# existant (Homebrew...) garde son propriétaire
+if [ ! -d /usr/local/bin ]; then
+	/bin/mkdir -p /usr/local/bin
+fi
+/bin/ln -sf "$DIR/xg760a" /usr/local/bin/xg760a
+
+/bin/launchctl bootstrap system "$PLIST" 2>/dev/null || /bin/launchctl load -w "$PLIST"
+
+# icône de la barre de menus : application dans /Applications, lancée à
+# chaque ouverture de session, et tout de suite pour la session en cours
+APP="/Applications/Wi-Fi XG-760A.app"
+AGENT=/Library/LaunchAgents/local.xg760a.menu.plist
+if [ -d "$DIR/Wi-Fi XG-760A.app" ]; then
+	CONSOLE_UID=$(/usr/bin/stat -f %u /dev/console 2>/dev/null)
+	if [ -n "$CONSOLE_UID" ] && [ "$CONSOLE_UID" -gt 0 ]; then
+		/bin/launchctl bootout "gui/$CONSOLE_UID/local.xg760a.menu" 2>/dev/null
+	fi
+	/bin/rm -rf "$APP"
+	/bin/mv "$DIR/Wi-Fi XG-760A.app" "$APP"
+	/bin/cp "$DIR/local.xg760a.menu.plist" "$AGENT"
+	/usr/sbin/chown root:wheel "$AGENT"
+	/bin/chmod 644 "$AGENT"
+	if [ -n "$CONSOLE_UID" ] && [ "$CONSOLE_UID" -gt 0 ]; then
+		/bin/launchctl bootstrap "gui/$CONSOLE_UID" "$AGENT" 2>/dev/null
+	fi
+fi
+exit 0

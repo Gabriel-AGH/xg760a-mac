@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Lance l'icône « Wi-Fi XG-760A » de la barre de menus à l'ouverture
+	     de session. « Quitter » dans son menu la ferme jusqu'à la suivante. -->
+	<key>Label</key>
+	<string>local.xg760a.menu</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/Applications/Wi-Fi XG-760A.app/Contents/MacOS/Wi-Fi XG-760A</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>LimitLoadToSessionType</key>
+	<string>Aqua</string>
+	<key>ProcessType</key>
+	<string>Interactive</string>
+</dict>
+</plist>
